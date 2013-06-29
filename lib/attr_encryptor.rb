@@ -204,9 +204,15 @@ module AttrEncryptor
       return_value = encrypted_value
     end
 
+    puts RUBY_VERSION
+    puts options[:charset]
+    puts return_value
+    puts return_value.is_a?(String)
     if RUBY_VERSION > '1.9' && options[:charset].present? && return_value.present? && return_value.is_a?(String)
+      puts "HERE"
       return_value.force_encoding(options[:charset])
     end
+    puts return_value.encoding
 
     return_value
   end
